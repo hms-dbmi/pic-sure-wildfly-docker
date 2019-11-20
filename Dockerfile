@@ -9,4 +9,8 @@ FROM jboss/wildfly:17.0.0.Final
 COPY --from=PSA /opt/jboss/wildfly/standalone/deployments/pic-sure-api-2.war /tmp/pic-sure-api-2.war
 COPY --from=PSAMA /opt/jboss/wildfly/standalone/deployments/pic-sure-auth-services.war /tmp/pic-sure-auth-services.war
 
+USER root
+
 RUN mv /tmp/*.war /opt/jboss/wildfly/standalone/deployments/
+
+USER jboss
