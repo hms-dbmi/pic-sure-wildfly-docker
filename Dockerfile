@@ -1,3 +1,6 @@
+ARG PIC_SURE_API_VERSION
+ARG PIC_SURE_AUTH_VERSION
+
 FROM hms-dbmi/pic-sure-api:${PIC_SURE_API_VERSION} as PSA
 FROM hms-dbmi/pic-sure-auth-microapp:${PIC_SURE_AUTH_VERSION} as PSAMA
 
