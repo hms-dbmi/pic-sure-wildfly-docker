@@ -10,7 +10,8 @@ COPY --from=PSA /opt/jboss/wildfly/standalone/deployments/pic-sure-api-2.war /tm
 COPY --from=PSAMA /opt/jboss/wildfly/standalone/deployments/pic-sure-auth-services.war /tmp/pic-sure-auth-services.war
 
 USER root
-
+RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+RUN yum -y install ngrep
 RUN mv /tmp/*.war /opt/jboss/wildfly/standalone/deployments/
 
 USER jboss
