@@ -20,8 +20,7 @@ FROM jboss/wildfly:17.0.0.Final
 # Now, copy the resolved dependencies from the 'dependencies' stage into the WildFly deployments directory
 COPY --from=dependencies /tmp/dependencies/*.jar /opt/jboss/wildfly/modules/system/layers/base/com/sql/mysql/main/
 # Copy the script that generates module.xml
-COPY generate-module-xml.sh /tmp/generate-module-xml.sh
-# Run the script to generate module.xml dynamically
+COPY --chown=jboss:jboss generate-module-xml.sh /tmp/generate-module-xml.sh
 RUN /tmp/generate-module-xml.sh
 
 COPY --from=PSA /opt/jboss/wildfly/standalone/deployments/pic-sure-api-2.war /tmp/pic-sure-api-2.war
