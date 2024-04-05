@@ -24,6 +24,9 @@ COPY --from=dependencies /tmp/dependencies/*.jar /opt/jboss/wildfly/modules/syst
 COPY generate-module-xml.sh /tmp/generate-module-xml.sh
 RUN chmod +x /tmp/generate-module-xml.sh && /tmp/generate-module-xml.sh
 
+# cat the generated module.xml file to see if it was generated correctly
+RUN cat /opt/jboss/wildfly/modules/system/layers/base/com/sql/mysql/main/module.xml
+
 USER jboss
 
 COPY --from=PSA /opt/jboss/wildfly/standalone/deployments/pic-sure-api-2.war /tmp/pic-sure-api-2.war
