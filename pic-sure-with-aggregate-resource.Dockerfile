@@ -22,7 +22,7 @@ COPY --from=dependencies /tmp/dependencies/*.jar /opt/jboss/wildfly/modules/syst
 # Copy the script that generates module.xml
 COPY generate-module-xml.sh /tmp/generate-module-xml.sh
 # Run the script to generate module.xml dynamically
-RUN chmod +x /tmp/generate-module-xml.sh && /tmp/generate-module-xml.sh
+RUN /tmp/generate-module-xml.sh
 
 COPY --from=PSA /opt/jboss/wildfly/standalone/deployments/pic-sure-api-2.war /tmp/pic-sure-api-2.war
 COPY --from=PSAMA /opt/jboss/wildfly/standalone/deployments/pic-sure-auth-services.war /tmp/pic-sure-auth-services.war
