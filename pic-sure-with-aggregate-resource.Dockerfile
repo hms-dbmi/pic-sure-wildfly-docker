@@ -29,6 +29,6 @@ COPY --from=PSV /opt/jboss/wildfly/standalone/deployments/pic-sure-visualization
 
 USER root
 
-RUN mv /tmp/*.war /opt/jboss/wildfly/standalone/deployments/
+RUN mv /tmp/*.war /opt/jboss/wildfly/modules/system/layers/base/com/sql/mysql/main/
 
 USER jboss
