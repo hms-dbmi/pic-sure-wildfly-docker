@@ -18,7 +18,7 @@ FROM hms-dbmi/pic-sure-visualization-resource:${PIC_SURE_VISUALIZATION_VERSION} 
 FROM jboss/wildfly:17.0.0.Final
 
 # Now, copy the resolved dependencies from the 'dependencies' stage into the WildFly deployments directory
-COPY --from=dependencies /tmp/dependencies/*.jar /opt/jboss/wildfly/standalone/deployments/
+COPY --from=dependencies /tmp/dependencies/*.jar /opt/jboss/wildfly/modules/system/layers/base/com/sql/mysql/main/
 
 COPY --from=PSA /opt/jboss/wildfly/standalone/deployments/pic-sure-api-2.war /tmp/pic-sure-api-2.war
 COPY --from=PSAMA /opt/jboss/wildfly/standalone/deployments/pic-sure-auth-services.war /tmp/pic-sure-auth-services.war
